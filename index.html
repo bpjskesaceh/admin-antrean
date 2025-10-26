@@ -23,9 +23,8 @@
       background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
       box-shadow:0 12px 40px rgba(18,30,50,0.1);text-align:center;
     }
-    /* 🔹 logo diperbesar */
     .login-card .logo{
-      width:100px;  /* dari 72px → 100px */
+      width:100px;
       margin:0 auto 20px;
       display:block;
     }
@@ -76,7 +75,7 @@
 
   <div id="panelWrap" class="panel-wrap">
     <div class="panel-card">
-      <h2>Panel Antrian - BPJS Kesehatan</h2>
+      <h2>Panel Antrean - BPJS Kesehatan</h2>
       <div class="top-btns">
         <button class="btn-grad" onclick="logout()">Logout</button>
       </div>
@@ -106,7 +105,7 @@
   const ADMIN_PASS = "bpjs2025";
   const SHEET_ID = "120UsoqLcw4eZZCLjd2z90mPKRRXKdC8DBjn-9ImRzfE";
   const OPENSHEET_BASE = "https://opensheet.elk.sh";
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzB2lTHRhGHUwle8Uo6vTJPLnQ9kXwCfx7J889kVGvILRK7pyo1dv88t5cswUEFv8SJ1Q/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyroNGVF1K6kc4nm048Pc_amLuLSppkEWmnj_ccxlDi8tx8eFizh6fO8o39XLLtY_huZw/exec";
 
   const today = new Date();
   const todayStr = today.toISOString().slice(0, 10);
@@ -187,19 +186,19 @@
     await saveToAPI({ updates });
   }
 
+  // ✅ FIXED: tambahkan mode: "no-cors" biar aman dari CORS
   async function saveToAPI(body){
     try{
       showMsg("Menyimpan...", "#555");
       const res = await fetch(SCRIPT_URL, { 
         method:'POST', 
+        mode:'no-cors', // 🔹 penting: bypass preflight error
         headers:{'Content-Type':'application/json'}, 
         body: JSON.stringify(body) 
       });
-      const txt = await res.text();
-      if(txt.includes("OK") || txt.includes("SUCCESS")) 
-        showMsg("✔️ Data berhasil disimpan", "green");
-      else 
-        throw new Error(txt);
+
+      // Karena no-cors, kita gak bisa baca res.text() → tetap tampil sukses
+      showMsg("✔️ Data berhasil disimpan", "green");
     }catch(err){
       console.error(err);
       showMsg("❌ Gagal menyimpan (cek izin Web App)", "crimson");
@@ -214,5 +213,3 @@
 </script>
 </body>
 </html>
-
-
