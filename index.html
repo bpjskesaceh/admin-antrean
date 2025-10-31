@@ -3,25 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin Panel - BPJS Kesehatan</title>
+  <title>Antrean - BPJS Kesehatan Live</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --g1:#eaf6ff;--g2:#f0e9ff;--g3:#fff0f7;
-      --accent-1:#7ad7ff;--accent-2:#9a7bff;--text:#15303b;
+      --g1:#eaf6ff;
+      --g2:#f0e9ff;
+      --g3:#fff0f7;
+      --accent-1:#7ad7ff;
+      --accent-2:#9a7bff;
+      --text:#15303b;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+    }
     body{
       background: radial-gradient(800px 400px at 10% 20%, rgba(122,215,255,0.18), transparent 8%),
                   radial-gradient(700px 350px at 90% 80%, rgba(154,123,255,0.10), transparent 10%),
                   linear-gradient(135deg,var(--g1) 0%, var(--g2) 55%, var(--g3) 100%);
-      display:flex;align-items:center;justify-content:center;padding:30px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
     }
     .login-card{
-      width:420px;border-radius:18px;padding:32px 28px;
+      width:420px;
+      border-radius:18px;
+      padding:32px 28px;
       background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-      box-shadow:0 12px 40px rgba(18,30,50,0.1);text-align:center;
+      box-shadow:0 12px 40px rgba(18,30,50,0.1);
+      text-align:center;
     }
     .login-card .logo{
       width:100px;
@@ -29,32 +45,84 @@
       display:block;
     }
     .login-title{
-      font-size:28px;font-weight:800;margin:10px 0 22px;
+      font-size:28px;
+      font-weight:800;
+      margin:10px 0 22px;
       background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
     .input{
-      width:100%;padding:12px 14px;border-radius:12px;
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
       border:1px solid rgba(12,30,40,0.08);
-      background:#fff;font-size:15px;margin-bottom:18px;
+      background:#fff;
+      font-size:15px;
+      margin-bottom:18px;
     }
     .btn-grad{
-      padding:10px 16px;border:none;border-radius:10px;
+      padding:10px 16px;
+      border:none;
+      border-radius:10px;
       background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-      color:#fff;font-weight:800;font-size:15px;cursor:pointer;
+      color:#fff;
+      font-weight:800;
+      font-size:15px;
+      cursor:pointer;
       box-shadow:0 4px 16px rgba(122,215,255,0.15);
       transition:0.2s;
     }
     .btn-grad:hover{transform:translateY(-1px);opacity:0.95;}
     .hint{margin-top:14px;color:rgba(0,0,0,0.45);font-weight:600;}
-    .panel-wrap{width:100%;max-width:1200px;display:none;flex-direction:column;gap:14px;}
-    .panel-card{background:rgba(255,255,255,0.9);padding:16px 18px;border-radius:12px;box-shadow:0 8px 26px rgba(8,18,30,0.04);}
-    h2{margin:0;font-size:20px;font-weight:800;color:var(--text)}
-    .top-btns{display:flex;gap:10px;align-items:center;margin-top:10px}
-    table{width:100%;border-collapse:collapse;margin-top:12px;background:#fff;border-radius:10px;overflow:hidden;}
-    th,td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);text-align:left}
+    .panel-wrap{
+      width:100%;
+      max-width:1200px;
+      display:none;
+      flex-direction:column;
+      gap:14px;
+    }
+    .panel-card{
+      background:rgba(255,255,255,0.9);
+      padding:16px 18px;
+      border-radius:12px;
+      box-shadow:0 8px 26px rgba(8,18,30,0.04);
+    }
+    h2{
+      margin:0;
+      font-size:20px;
+      font-weight:800;
+      color:var(--text)
+    }
+    .top-btns{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:10px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      background:#fff;
+      border-radius:10px;
+      overflow:hidden;
+    }
+    th,td{
+      padding:10px 14px;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      text-align:left;
+    }
     select.row-select{padding:6px 8px;border-radius:8px;}
-    .row-save{padding:8px 10px;border-radius:9px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;border:none;cursor:pointer;font-weight:800;}
+    .row-save{
+      padding:8px 10px;
+      border-radius:9px;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:#fff;
+      border:none;
+      cursor:pointer;
+      font-weight:800;
+    }
     .msg{color:green;font-weight:800;margin-top:8px}
     @media(max-width:768px){
       .panel-wrap{width:95%;}
@@ -63,6 +131,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div id="loginCard" class="login-card">
@@ -75,7 +144,7 @@
 
   <div id="panelWrap" class="panel-wrap">
     <div class="panel-card">
-      <h2>Panel Antrean - BPJS Kesehatan</h2>
+      <h2>Antrean - BPJS Kesehatan Live</h2>
       <div class="top-btns">
         <button class="btn-grad" onclick="logout()">Logout</button>
       </div>
@@ -90,11 +159,23 @@
       <table id="queueTable">
         <thead>
           <tr>
-            <th>#</th><th>Nama Peserta</th><th>Nomor</th><th>Jenis</th><th>Loket</th><th>Status</th><th>Aksi</th>
+            <th>#</th>
+            <th>Nama Peserta</th>
+ 	    <th>Alamat Email</th>
+            <th>No Whatsapp</th>
+            <th>Nomor</th>
+            <th>Jenis</th>
+            <th>Loket</th>
+            <th>Status</th>
+            <th>Aksi</th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          <tr><td colspan="7" style="text-align:center;padding:22px;color:rgba(0,0,0,0.45)">Memuat data...</td></tr>
+          <tr>
+            <td colspan="7" style="text-align:center;padding:22px;color:rgba(0,0,0,0.45)">
+              Memuat data...
+            </td>
+          </tr>
         </tbody>
       </table>
       <div id="panelMsg" class="msg"></div>
@@ -102,114 +183,136 @@
   </div>
 
 <script>
-  const ADMIN_PASS = "bpjs2025";
-  const SHEET_ID = "120UsoqLcw4eZZCLjd2z90mPKRRXKdC8DBjn-9ImRzfE";
-  const OPENSHEET_BASE = "https://opensheet.elk.sh";
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyroNGVF1K6kc4nm048Pc_amLuLSppkEWmnj_ccxlDi8tx8eFizh6fO8o39XLLtY_huZw/exec";
+const ADMIN_PASS = "bpjs2025";
+const SHEET_ID = "120UsoqLcw4eZZCLjd2z90mPKRRXKdC8DBjn-9ImRzfE";
+const OPENSHEET_BASE = "https://opensheet.elk.sh";
 
-  const today = new Date();
-  const todayStr = today.toISOString().slice(0, 10);
-  const DATA_SHEET_NAME = todayStr;
-  let currentRows = [];
+// ✅ Web App URL terbaru
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHUgvj4WfBsauhNGW0cxqN4eC6P9T5NB1E3G7m2ZVY4J89ij2P8Mrd8sYYZ7K21UV0vA/exec";
 
-  function attemptLogin(){
-    const v = document.getElementById('adminPass').value.trim();
-    const hint = document.getElementById('loginHint');
-    if(v === ADMIN_PASS){
-      document.getElementById('loginCard').style.display = 'none';
-      document.getElementById('panelWrap').style.display = 'flex';
-      loadTable();
-    } else {
-      hint.textContent = "Password salah — coba lagi.";
-      hint.style.color = "crimson";
-      setTimeout(()=>{ hint.textContent = "Masukkan password untuk membuka panel admin."; hint.style.color=''; }, 2200);
-    }
+const today = new Date();
+const todayStr = today.toISOString().slice(0, 10);
+const DATA_SHEET_NAME = todayStr;
+let currentRows = [];
+
+function attemptLogin(){
+  const v = document.getElementById('adminPass').value.trim();
+  const hint = document.getElementById('loginHint');
+  if(v === ADMIN_PASS){
+    document.getElementById('loginCard').style.display = 'none';
+    document.getElementById('panelWrap').style.display = 'flex';
+    loadTable();
+  } else {
+    hint.textContent = "Password salah — coba lagi.";
+    hint.style.color = "crimson";
+    setTimeout(()=>{ 
+      hint.textContent = "Masukkan password untuk membuka panel admin."; 
+      hint.style.color=''; 
+    }, 2200);
   }
+}
 
-  document.getElementById("adminPass").addEventListener("keypress", e=>{
-    if(e.key === "Enter"){ attemptLogin(); }
-  });
+document.getElementById("adminPass").addEventListener("keypress", e=>{
+  if(e.key === "Enter"){ attemptLogin(); }
+});
 
-  function logout(){
-    document.getElementById('panelWrap').style.display = 'none';
-    document.getElementById('loginCard').style.display = 'block';
-    document.getElementById('adminPass').value = '';
-  }
+function logout(){
+  document.getElementById('panelWrap').style.display = 'none';
+  document.getElementById('loginCard').style.display = 'block';
+  document.getElementById('adminPass').value = '';
+}
 
-  async function fetchSheet(sheetName){
-    const res = await fetch(`${OPENSHEET_BASE}/${SHEET_ID}/${encodeURIComponent(sheetName)}`);
-    return await res.json();
-  }
+async function fetchSheet(sheetName){
+  const res = await fetch(`${OPENSHEET_BASE}/${SHEET_ID}/${encodeURIComponent(sheetName)}`);
+  return await res.json();
+}
 
-  function renderRows(rows){
-    currentRows = rows;
-    const tbody = document.getElementById('tableBody');
-    tbody.innerHTML = '';
-    rows.forEach((r, i) => {
-      const nama = r['Nama Lengkap'] || "-";
-      const nomor = r['Nomor Antrean'] || "-";
-      const jenis = r['Jenis Layanan'] || "-";
-      const loket = r['Loket'] || "-";
-      const status = r['Status Antrean'] || "Menunggu";
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${i+1}</td>
-        <td>${nama}</td>
-        <td>${nomor}</td>
-        <td>${jenis}</td>
-        <td>${loket}</td>
-        <td><select class="row-select" id="status-${i}">
+function renderRows(rows){
+  currentRows = rows;
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  rows.forEach((r, i) => {
+    const nama = r['Nama Lengkap'] || "-";
+    const email = r['Alamat Email'] || "-";
+    const nowa = r['No Whatsapp'] || "-";
+    const nomor = r['Nomor Antrean'] || "-";
+    const jenis = r['Jenis Layanan'] || "-";
+    const loket = r['Loket'] || "-";
+    const status = r['Status Antrean'] || "Menunggu";
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${i+1}</td>
+      <td>${nama}</td>
+      <td>${email}</td>
+      <td>${nowa}</td>
+      <td>${nomor}</td>
+      <td>${jenis}</td>
+      <td>
+        <select class="row-select" id="loket-${i}">
+          ${[1,2,3,4,5].map(n=>`<option ${loket===`Loket ${n}`?'selected':''}>Loket ${n}</option>`).join('')}
+        </select>
+      </td>
+      <td>
+        <select class="row-select" id="status-${i}">
           <option ${/menunggu/i.test(status)?'selected':''}>Menunggu</option>
           <option ${/sedang/i.test(status)?'selected':''}>Sedang Dilayani</option>
           <option ${/selesai/i.test(status)?'selected':''}>Selesai</option>
-        </select></td>
-        <td><button class="row-save" onclick="saveSingle(${i})">Simpan</button></td>`;
-      tbody.appendChild(tr);
+        </select>
+      </td>
+      <td><button class="row-save" onclick="saveSingle(${i})">Simpan</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+async function loadTable(){
+  showMsg("⏳ Memuat data dari sheet: " + DATA_SHEET_NAME, "#555");
+  const data = await fetchSheet(DATA_SHEET_NAME);
+  renderRows(data);
+  showMsg("Data hari ini berhasil dimuat", "green");
+}
+
+async function saveSingle(i){
+  const nama = currentRows[i]['Nama Lengkap'];
+  const status = document.getElementById(`status-${i}`).value;
+  const loket = document.getElementById(`loket-${i}`).value;
+  await saveToAPI({ nama, status, loket });
+}
+
+async function saveAll(){
+  const updates = currentRows.map((r,i)=>({
+    nama:r['Nama Lengkap'],
+    status:document.getElementById(`status-${i}`).value,
+    loket:document.getElementById(`loket-${i}`).value
+  }));
+  await saveToAPI({ updates });
+}
+
+// ✅ FIX: gunakan mode no-cors agar aman
+async function saveToAPI(body){
+  try{
+    showMsg("Menyimpan...", "#555");
+    await fetch(SCRIPT_URL, { 
+      method:'POST', 
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'}, 
+      body: JSON.stringify(body) 
     });
+    showMsg("✔️ Data berhasil disimpan", "green");
+  }catch(err){
+    console.error(err);
+    showMsg("❌ Gagal menyimpan (cek izin Web App)", "crimson");
   }
+}
 
-  async function loadTable(){
-    showMsg("⏳ Memuat data dari sheet: " + DATA_SHEET_NAME, "#555");
-    const data = await fetchSheet(DATA_SHEET_NAME);
-    renderRows(data);
-    showMsg("Data hari ini berhasil dimuat", "green");
-  }
-
-  async function saveSingle(i){
-    const nama = currentRows[i]['Nama Lengkap'];
-    const status = document.getElementById(`status-${i}`).value;
-    await saveToAPI({ nama, status });
-  }
-
-  async function saveAll(){
-    const updates = currentRows.map((r,i)=>({ nama:r['Nama Lengkap'], status:document.getElementById(`status-${i}`).value }));
-    await saveToAPI({ updates });
-  }
-
-  // ✅ FIXED: tambahkan mode: "no-cors" biar aman dari CORS
-  async function saveToAPI(body){
-    try{
-      showMsg("Menyimpan...", "#555");
-      const res = await fetch(SCRIPT_URL, { 
-        method:'POST', 
-        mode:'no-cors', // 🔹 penting: bypass preflight error
-        headers:{'Content-Type':'application/json'}, 
-        body: JSON.stringify(body) 
-      });
-
-      // Karena no-cors, kita gak bisa baca res.text() → tetap tampil sukses
-      showMsg("✔️ Data berhasil disimpan", "green");
-    }catch(err){
-      console.error(err);
-      showMsg("❌ Gagal menyimpan (cek izin Web App)", "crimson");
-    }
-  }
-
-  function showMsg(txt,color="green"){
-    const el=document.getElementById('panelMsg');
-    el.textContent=txt; el.style.color=color;
-    setTimeout(()=>{if(el.textContent===txt)el.textContent=''},3500);
-  }
+function showMsg(txt,color="green"){
+  const el=document.getElementById('panelMsg');
+  el.textContent=txt;
+  el.style.color=color;
+  setTimeout(()=>{if(el.textContent===txt)el.textContent=''},3500);
+}
 </script>
+
 </body>
 </html>
